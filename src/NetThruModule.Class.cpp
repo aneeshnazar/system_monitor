@@ -27,7 +27,9 @@ std::string NetThruModule::getInfo(void)
     s << "Network throughput: " << std::endl;
     while(getline(ifs, line))
     {
-        if (line.find("tcp") == std::string::npos && line.find("udp") == std::string::npos)
+        if (line.find("tcp") == std::string::npos && line.find("udp") == std::string::npos &&
+				line.find(" 0               0") == std::string::npos &&
+				line.find("bytes_in") == std::string::npos)
         {
             s << line.substr(line.find(' ')) << std::endl;
             ++line_num;
