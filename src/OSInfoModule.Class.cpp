@@ -27,7 +27,7 @@ std::string OSInfoModule::getInfo(void)
 {
     std::stringstream s;
 
-    s << "OS TYPE:\t\t" << name.sysname << std::endl << "OS RELEASE:\t\t" << name.release << std::endl;
+    s << "OS TYPE:\t\t" << name.sysname << std::endl << " OS RELEASE:\t\t" << name.release << std::endl;
     return (s.str());
 }
 
@@ -39,5 +39,5 @@ void OSInfoModule::update(void)
 
 int OSInfoModule::getVisSize(void)
 {
-    return (0);
+    return (2);
 }

@@ -36,5 +36,5 @@ void DateTimeModule::update(void)
 
 int DateTimeModule::getVisSize(void)
 {
-    return (0);
+    return (1);
 }

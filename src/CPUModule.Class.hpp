@@ -33,6 +33,7 @@ class CPUModule : public IMonitorModule {
 		std::string getBuf(void) const;
 		void setBuf(std::string _buf);
         std::string getInfo(void);
+        void setInfo(void);
         void update(void);
         int getVisSize(void);
 };

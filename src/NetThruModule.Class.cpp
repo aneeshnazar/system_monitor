@@ -1,6 +1,6 @@
 #include "NetThruModule.Class.hpp"
 
-NetThruModule::NetThruModule(){}
+NetThruModule::NetThruModule(){ line_num = 1;}
 
 NetThruModule::NetThruModule(NetThruModule const &cc)
 {
@@ -28,7 +28,10 @@ std::string NetThruModule::getInfo(void)
     while(getline(ifs, line))
     {
         if (line.find("tcp") == std::string::npos && line.find("udp") == std::string::npos)
-            s << line << std::endl;
+        {
+            s << line.substr(line.find(' ')) << std::endl;
+            ++line_num;
+        }
     }
     return (s.str());
 }
@@ -40,5 +43,5 @@ void NetThruModule::update(void)
 
 int NetThruModule::getVisSize(void)
 {
-    return (0);
+    return (line_num);
 }

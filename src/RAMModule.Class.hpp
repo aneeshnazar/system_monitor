@@ -33,6 +33,7 @@ class RAMModule : public IMonitorModule {
 		void setRamwired(int _ramWired);
 		int getRamunused(void) const;
 		void setRamunused(int _ramUnused);
+        void setInfo();
         std::string getInfo(void);
         void update(void);
         int getVisSize(void);

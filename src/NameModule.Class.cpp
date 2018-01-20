@@ -39,7 +39,7 @@ std::string NameModule::getInfo(void)
 {
     std::stringstream s;
 
-    s << "Hostname:\t\t" << hostname << std::endl << "Username:\t\t" << username << std::endl;
+    s << "Hostname:\t\t" << hostname << std::endl << " Username:\t\t" << username << std::endl;
     return (s.str());
 }
 
@@ -51,5 +51,5 @@ void NameModule::update(void)
 
 int NameModule::getVisSize(void)
 {
-    return (0);
+    return (2);
 }

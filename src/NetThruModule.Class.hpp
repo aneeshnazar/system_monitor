@@ -7,6 +7,7 @@
 
 class NetThruModule : public IMonitorModule {
     private:
+        int line_num;
 	public:
         NetThruModule ();
         NetThruModule (NetThruModule const &cc);

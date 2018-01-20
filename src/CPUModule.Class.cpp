@@ -2,6 +2,33 @@
 
 CPUModule::CPUModule()
 {
+    setInfo();
+}
+
+CPUModule::CPUModule(CPUModule const &cc)
+{
+    *this = cc;
+}
+
+CPUModule::~CPUModule(){}
+
+CPUModule &CPUModule::operator=(CPUModule const &input)
+{
+	size = input.size;
+	buf = input.buf;
+	return (*this);
+}
+
+size_t CPUModule::getSize(void) const { return size;}
+
+void CPUModule::setSize(size_t _size){size = _size;}
+
+std::string CPUModule::getBuf(void) const { return buf;}
+
+void CPUModule::setBuf(std::string _buf){buf = _buf;}
+
+void CPUModule::setInfo(void)
+{
     this->size = 128;
     char buff[size];
     sysctlbyname("machdep.cpu.brand_string", &buff, &size, NULL, 0);
@@ -30,40 +57,19 @@ CPUModule::CPUModule()
     load_avg3 = atof(info[stuck ? 16 : 14].c_str());
 }
 
-CPUModule::CPUModule(CPUModule const &cc)
-{
-    *this = cc;
-}
-
-CPUModule::~CPUModule(){}
-
-CPUModule &CPUModule::operator=(CPUModule const &input)
-{
-	size = input.size;
-	buf = input.buf;
-	return (*this);
-}
-
-size_t CPUModule::getSize(void) const { return size;}
-
-void CPUModule::setSize(size_t _size){size = _size;}
-
-std::string CPUModule::getBuf(void) const { return buf;}
-
-void CPUModule::setBuf(std::string _buf){buf = _buf;}
-
 std::string CPUModule::getInfo(void)
 {
     std::stringstream s;
 
+    setInfo();
     s << "CPU Info:\t" << buf << std::endl;
-    s << "Processes:\t" << std::endl;
-    s << "Total:\t\t\t" << process_total << std::endl;
-    s << "Running:\t\t" << process_running << std::endl;
+    s << " Processes:\t" << std::endl;
+    s << " Total:\t\t\t" << process_total << std::endl;
+    s << " Running:\t\t" << process_running << std::endl;
     if (stuck)
-        s << "Stuck:\t\t" << process_stuck << std::endl;
-    s << "Sleeping:\t\t" << process_sleeping << std::endl;
-    s << "Threads:\t\t" << process_threads << std::endl;
+        s << " Stuck:\t\t" << process_stuck << std::endl;
+    s << " Sleeping:\t\t" << process_sleeping << std::endl;
+    s << " Threads:\t\t" << process_threads << std::endl;
     return (s.str());
 }
 
@@ -74,5 +80,5 @@ void CPUModule::update(void)
 
 int CPUModule::getVisSize(void)
 {
-    return (0);
+    return (6 + stuck);
 }

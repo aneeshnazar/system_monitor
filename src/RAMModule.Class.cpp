@@ -2,24 +2,7 @@
 
 RAMModule::RAMModule()
 {
-    std::system("top -l 1 | grep -E \"^CPU|^Phys\" > ./.raminfo");
-    std::ifstream       ifs("./.raminfo");
-    std::string         line = "";
-    std::vector<std::string> info;
-    while (1)
-    {
-        ifs >> line;
-        if (line == "" || ifs.eof())
-            break ;
-        info.push_back(line);
-    }
-    ifs.close();
-    cpuUsageUser = atof(info[2].c_str());
-    cpuUsageSys = atof(info[4].c_str());
-    cpuUsageIdle = atof(info[6].c_str());
-    ramUsed = atoi(info[9].c_str());
-    ramWired = atoi(info[11].substr(1).c_str());
-    ramUnused = atoi(info[13].c_str());
+    setInfo();
 }
 
 RAMModule::RAMModule(RAMModule const &cc)
@@ -64,19 +47,42 @@ int RAMModule::getRamunused(void) const { return ramUnused;}
 
 void RAMModule::setRamunused(int _ramUnused){ramUnused = _ramUnused;}
 
+void RAMModule::setInfo()
+{
+    std::system("top -l 1 | grep -E \"^CPU|^Phys\" > ./.raminfo");
+    std::ifstream       ifs("./.raminfo");
+    std::string         line = "";
+    std::vector<std::string> info;
+    while (1)
+    {
+        ifs >> line;
+        if (line == "" || ifs.eof())
+            break ;
+        info.push_back(line);
+    }
+    ifs.close();
+    cpuUsageUser = atof(info[2].c_str());
+    cpuUsageSys = atof(info[4].c_str());
+    cpuUsageIdle = atof(info[6].c_str());
+    ramUsed = atoi(info[9].c_str());
+    ramWired = atoi(info[11].substr(1).c_str());
+    ramUnused = atoi(info[13].c_str());
+}
+
 std::string RAMModule::getInfo(void)
 {
     std::stringstream    s;
 
+    setInfo();
     s << "CPU Usage: " << std::endl;
-    s << "User:\t\t" << cpuUsageUser << "%" << std::endl;
-    s << "System:\t\t" << cpuUsageSys << "%" << std::endl;
-    s << "Idle:\t\t" << cpuUsageIdle << "%" << std::endl << std::endl;
+    s << " User:\t\t" << cpuUsageUser << "%" << std::endl;
+    s << " System:\t\t" << cpuUsageSys << "%" << std::endl;
+    s << " Idle:\t\t" << cpuUsageIdle << "%" << std::endl << std::endl;
 
-    s << "RAM:\t\t" << std::endl;
-    s << "Used:\t\t" << ramUsed - ramWired << "MB" << std::endl;
-    s << "Wired:\t\t" << ramWired << "MB" << std::endl;
-    s << "Unused:\t\t" << ramUnused << "MB" << std::endl << std::endl;
+    s << " RAM:\t\t" << std::endl;
+    s << " Used:\t\t" << ramUsed - ramWired << "MB" << std::endl;
+    s << " Wired:\t\t" << ramWired << "MB" << std::endl;
+    s << " Unused:\t\t" << ramUnused << "MB" << std::endl << std::endl;
     return (s.str());
 }
 
@@ -87,5 +93,5 @@ void RAMModule::update(void)
 
 int RAMModule::getVisSize(void)
 {
-    return (0);
+    return (10);
 }
