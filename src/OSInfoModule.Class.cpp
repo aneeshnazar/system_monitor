@@ -1,7 +1,10 @@
 #include "OSInfoModule.Class.hpp"
 #include <sstream>
 
-OSInfoModule::OSInfoModule(){}
+OSInfoModule::OSInfoModule()
+{
+    uname(&name);
+}
 
 OSInfoModule::OSInfoModule(OSInfoModule const &cc)
 {

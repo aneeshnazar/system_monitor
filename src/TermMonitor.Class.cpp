@@ -24,5 +24,8 @@ void TermMonitor::config(void)
 void TermMonitor::run(void)
 {
     config();
+    std::cout << nm.getInfo() << std::endl;
+    std::cout << osim.getInfo() << std::endl;
+    std::cout << dtm.getInfo() << std::endl;
     std::cout << "You are running the TermMonitor" << std::endl;
 }
