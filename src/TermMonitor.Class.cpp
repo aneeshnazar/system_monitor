@@ -27,5 +27,8 @@ void TermMonitor::run(void)
     std::cout << nm.getInfo() << std::endl;
     std::cout << osim.getInfo() << std::endl;
     std::cout << dtm.getInfo() << std::endl;
+    std::cout << cpum.getInfo() << std::endl;
+    std::cout << ramm.getInfo() << std::endl;
+    std::cout << ntm.getInfo() << std::endl;
     std::cout << "You are running the TermMonitor" << std::endl;
 }

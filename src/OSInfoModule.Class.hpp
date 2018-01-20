@@ -3,8 +3,9 @@
 
 #include <sys/utsname.h>
 #include <iostream>
+#include "IMonitorModule.Class.hpp"
 
-class OSInfoModule {
+class OSInfoModule : public IMonitorModule {
     private:
 		struct utsname name;
 	public:
@@ -16,5 +17,7 @@ class OSInfoModule {
 		struct utsname getName(void) const;
 		void setName(struct utsname _name);
         std::string getInfo(void);
+        void update(void);
+        int getVisSize(void);
 };
 #endif

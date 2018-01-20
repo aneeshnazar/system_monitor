@@ -5,6 +5,9 @@
 #include "IMonitorDisplay.Class.hpp"
 #include "DateTimeModule.Class.hpp"
 #include "NameModule.Class.hpp"
+#include "NetThruModule.Class.hpp"
+#include "CPUModule.Class.hpp"
+#include "RAMModule.Class.hpp"
 #include "OSInfoModule.Class.hpp"
 
 class TermMonitor : public IMonitorDisplay{
@@ -13,6 +16,9 @@ class TermMonitor : public IMonitorDisplay{
         NameModule      nm;
         OSInfoModule    osim;
         DateTimeModule  dtm;
+        CPUModule       cpum;
+        RAMModule       ramm;
+        NetThruModule   ntm;
 	public:
         TermMonitor ();
         TermMonitor (TermMonitor const &cc);

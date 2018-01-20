@@ -1,14 +1,17 @@
 NAME = ft_gkrellm
 CC := clang++
 CFLAGS	+= -Wall -Wextra -Werror
-SFILES = DateTimeModule.Class.cpp \
-GraphicMonitor.Class.cpp \
-IMonitorDisplay.Class.cpp \
-IMonitorModule.Class.cpp \
-NameModule.Class.cpp \
-OSInfoModule.Class.cpp \
-TermMonitor.Class.cpp \
-main.cpp
+SFILES = 	CPUModule.Class.cpp \
+			RAMModule.Class.cpp \
+			DateTimeModule.Class.cpp \
+			GraphicMonitor.Class.cpp \
+			IMonitorDisplay.Class.cpp \
+			IMonitorModule.Class.cpp \
+			NameModule.Class.cpp \
+			NetThruModule.Class.cpp \
+			OSInfoModule.Class.cpp \
+			TermMonitor.Class.cpp \
+			main.cpp
 
 ODIR = obj
 SDIR = src

@@ -2,8 +2,9 @@
 #define NAMEMODULE_H
 
 #include <iostream>
+#include "IMonitorModule.Class.hpp"
 
-class NameModule {
+class NameModule : public IMonitorModule {
     private:
 		std::string hostname;
 		std::string username;
@@ -18,5 +19,7 @@ class NameModule {
 		std::string getUsername(void) const;
 		void setUsername(std::string _username);
         std::string getInfo(void);
+        void update(void);
+        int getVisSize(void);
 };
 #endif

@@ -3,8 +3,9 @@
 
 #include <ctime>
 #include <iostream>
+#include "IMonitorModule.Class.hpp"
 
-class DateTimeModule {
+class DateTimeModule : public IMonitorModule {
     private:
 		time_t start_time;
 	public:
@@ -16,5 +17,7 @@ class DateTimeModule {
 		time_t getStartTime(void) const;
 		void setStartTime(void);
         std::string getInfo(void);
+        void update(void);
+        int getVisSize(void);
 };
 #endif

@@ -27,3 +27,14 @@ std::string DateTimeModule::getInfo(void)
     setStartTime();
     return asctime(localtime(&start_time));
 }
+
+
+void DateTimeModule::update(void)
+{
+
+}
+
+int DateTimeModule::getVisSize(void)
+{
+    return (0);
+}

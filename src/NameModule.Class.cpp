@@ -42,3 +42,14 @@ std::string NameModule::getInfo(void)
     s << "Hostname:\t\t" << hostname << std::endl << "Username:\t\t" << username << std::endl;
     return (s.str());
 }
+
+
+void NameModule::update(void)
+{
+
+}
+
+int NameModule::getVisSize(void)
+{
+    return (0);
+}
