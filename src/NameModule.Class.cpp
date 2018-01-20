@@ -1,6 +1,17 @@
 #include "NameModule.Class.hpp"
+#include <sstream>
+#include <unistd.h>
 
-NameModule::NameModule(){}
+NameModule::NameModule()
+{
+    char    _hname[255];
+    char    _uname[255];
+
+    gethostname(_hname, 255);
+    getlogin_r(_uname, 255);
+    setHostname(_hname);
+    setUsername(_uname);
+}
 
 NameModule::NameModule(NameModule const &cc)
 {
@@ -24,3 +35,10 @@ std::string NameModule::getUsername(void) const { return username;}
 
 void NameModule::setUsername(std::string _username){username = _username;}
 
+std::string NameModule::getInfo(void)
+{
+    std::stringstream s;
+
+    s << "Hostname:\t\t" << hostname << std::endl << "Username:\t\t" << username << std::endl;
+    return (s.str());
+}

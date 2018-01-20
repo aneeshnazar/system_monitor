@@ -15,5 +15,6 @@ class OSInfoModule {
 
 		struct utsname getName(void) const;
 		void setName(struct utsname _name);
+        std::string getInfo(void);
 };
 #endif

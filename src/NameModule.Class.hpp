@@ -17,5 +17,6 @@ class NameModule {
 		void setHostname(std::string _hostname);
 		std::string getUsername(void) const;
 		void setUsername(std::string _username);
+        std::string getInfo(void);
 };
 #endif
