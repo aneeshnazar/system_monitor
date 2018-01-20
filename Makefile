@@ -25,7 +25,7 @@ $(ODIR)/%.o: $(SDIR)/%.cpp
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) -I $(INC) -o $@ $(OBJ)
+	@$(CC) $(CFLAGS) -I $(INC) -o $@ $(OBJ) -lncurses
 
 $(OBJ): | $(ODIR)
 
