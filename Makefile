@@ -17,20 +17,26 @@ ODIR = obj
 SDIR = src
 SRC = $(addprefix $(SDIR)/,$(SFILES))
 OBJ = $(addprefix $(ODIR)/,$(SFILES:.cpp=.o))
-INC = includes/
+#INC = includes/
+LFLAG = -lncurses -framework sfml-graphics -framework sfml-window -framework sfml-system -F SFML/Frameworks
+INC = -I ./SFML/include
+SFML = DYLD_FRAMEWORK_PATH="$(PWD)/SFML/Frameworks"
 
 $(ODIR)/%.o: $(SDIR)/%.cpp
-	@$(CC) $(CFLAGS) -I $(INC) -c $^ -o $@
+	@$(CC) $(CFLAGS) $(INC) -c $^ -o $@
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) -I $(INC) -o $@ $(OBJ) -lncurses
+	@$(CC) $(CFLAGS) $(INC) -o $@ $(OBJ) $(LFLAG)
 
 $(OBJ): | $(ODIR)
 
 $(ODIR):
 	@mkdir $(ODIR)
+
+sfml:
+	@echo export $(SFML)
 
 clean:
 	@rm -rf $(ODIR)
