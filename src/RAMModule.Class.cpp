@@ -75,13 +75,13 @@ std::string RAMModule::getInfo(void)
 
     setInfo();
     s << "CPU Usage: " << std::endl;
-    s << " User:\t\t" << cpuUsageUser << "%" << std::endl;
+    s << " User:\t\t\t" << cpuUsageUser << "%" << std::endl;
     s << " System:\t\t" << cpuUsageSys << "%" << std::endl;
-    s << " Idle:\t\t" << cpuUsageIdle << "%" << std::endl << std::endl;
+    s << " Idle:\t\t\t" << cpuUsageIdle << "%" << std::endl << std::endl;
 
-    s << " RAM:\t\t" << std::endl;
-    s << " Used:\t\t" << ramUsed - ramWired << "MB" << std::endl;
-    s << " Wired:\t\t" << ramWired << "MB" << std::endl;
+    s << " RAM:" << std::endl;
+    s << " Used:\t\t\t" << ramUsed - ramWired << "MB" << std::endl;
+    s << " Wired:\t\t\t" << ramWired << "MB" << std::endl;
     s << " Unused:\t\t" << ramUnused << "MB" << std::endl << std::endl;
     return (s.str());
 }

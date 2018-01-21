@@ -74,18 +74,23 @@ void TermMonitor::update(void)
 void TermMonitor::print(void)
 {
 	int lines = 1;
-	mvprintw(lines,1,"You are running the TermMonitor");
-	lines += 1;
-	mvprintw(lines,1,"%s",nm.getInfo().c_str());
-	lines += nm.getVisSize();
-	mvprintw(lines,1,"%s",osim.getInfo().c_str());
-	lines += osim.getVisSize();
+	mvprintw(lines++,1,"You are running the TermMonitor");
+	drawLine(lines++);
 	mvprintw(lines,1,"%s",dtm.getInfo().c_str());
 	lines += dtm.getVisSize();
+	drawLine(lines++);
+	mvprintw(lines,1,"%s",nm.getInfo().c_str());
+	lines += nm.getVisSize();
+	drawLine(lines++);
+	mvprintw(lines,1,"%s",osim.getInfo().c_str());
+	lines += osim.getVisSize();
+	drawLine(lines++);
 	mvprintw(lines,1,"%s",cpum.getInfo().c_str());
 	lines += cpum.getVisSize();
+	drawLine(lines++);
 	mvprintw(lines,1,"%s",ramm.getInfo().c_str());
 	lines += ramm.getVisSize();
+	drawLine(lines++);
 	mvprintw(lines,1,"%s",ntm.getInfo().c_str());
 }
 
@@ -99,5 +104,13 @@ void TermMonitor::drawBorder(void)
 	attron(COLOR_PAIR(1));
 	wborder(stdscr, ACS_VLINE, ACS_VLINE, ACS_HLINE, ACS_HLINE, ACS_ULCORNER,
 			ACS_URCORNER, ACS_LLCORNER, ACS_LRCORNER);
+	attroff(COLOR_PAIR(1));
+}
+
+void TermMonitor::drawLine(int row)
+{
+	attron(COLOR_PAIR(1));
+	for (int i = 0; i < _cols; i++)
+		mvaddch(row, i, ACS_HLINE);
 	attroff(COLOR_PAIR(1));
 }

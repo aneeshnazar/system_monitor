@@ -36,5 +36,6 @@ class TermMonitor : public IMonitorDisplay{
         void config();
 		void resize();
 		void drawBorder();
+		void drawLine(int row);
 };
 #endif
