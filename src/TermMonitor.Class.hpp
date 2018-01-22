@@ -10,6 +10,7 @@
 #include "CPUModule.Class.hpp"
 #include "RAMModule.Class.hpp"
 #include "OSInfoModule.Class.hpp"
+#include "CatModule.Class.hpp"
 #define FPS 60
 #define CLOCKS_PER_FRAME (CLOCKS_PER_SEC / FPS)
 
@@ -22,6 +23,7 @@ class TermMonitor : public IMonitorDisplay{
         CPUModule       cpum;
         RAMModule       ramm;
         NetThruModule   ntm;
+		CatModule		cat;
 		int				_rows;
 		int				_cols;
 		int				_ch;
@@ -33,7 +35,6 @@ class TermMonitor : public IMonitorDisplay{
         void run();
 		void update();
 		void print();
-        void config();
 		void resize();
 		void drawBorder();
 		void drawLine(int row);

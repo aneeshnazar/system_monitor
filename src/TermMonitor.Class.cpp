@@ -10,8 +10,6 @@ TermMonitor::TermMonitor() : _ch(0) {
 	init_pair(1, COLOR_GREEN, COLOR_BLACK);
 	init_pair(2, COLOR_RED, COLOR_BLACK);
 	resize();
-	config();
-	clear();
 	run();
 }
 
@@ -30,19 +28,6 @@ TermMonitor &TermMonitor::operator=(TermMonitor const &input)
 	return (*this);
 }
 
-void TermMonitor::config(void)
-{
-	std::string configMes = "Please configure TermMonitor";
-
-	drawBorder();
-    mvprintw(_rows/2, (_cols/2 - configMes.length() / 2), "%s", configMes.c_str());
-	while (1)
-	{
-		if ((_ch = getch()) == 10)
-			break;
-	}
-}
-
 void TermMonitor::run(void)
 {
 	clock_t now = 0;
@@ -54,7 +39,6 @@ void TermMonitor::run(void)
 		if (now / CLOCKS_PER_SEC != last_sec / CLOCKS_PER_SEC && clear())
 			last_sec = now;
 		resize();
-		update();
 		print();
 		drawBorder();
 		if ((_ch = getch()) == 27)
@@ -69,12 +53,16 @@ void TermMonitor::update(void)
 	cpum.update();
 	ramm.update();
 	ntm.update();
+	cat.update();
 }
 
 void TermMonitor::print(void)
 {
 	int lines = 1;
 	mvprintw(lines++,1,"You are running the TermMonitor");
+	drawLine(lines++);
+	mvprintw(lines,1,"%s",cat.getInfo().c_str());
+	lines += cat.getVisSize();
 	drawLine(lines++);
 	mvprintw(lines,1,"%s",dtm.getInfo().c_str());
 	lines += dtm.getVisSize();

@@ -61,12 +61,15 @@ void RAMModule::setInfo()
         info.push_back(line);
     }
     ifs.close();
-    cpuUsageUser = atof(info[2].c_str());
-    cpuUsageSys = atof(info[4].c_str());
-    cpuUsageIdle = atof(info[6].c_str());
-    ramUsed = atoi(info[9].c_str());
-    ramWired = atoi(info[11].substr(1).c_str());
-    ramUnused = atoi(info[13].c_str());
+	if (info.size() >= 14)
+	{
+		cpuUsageUser = atof(info[2].c_str());
+		cpuUsageSys = atof(info[4].c_str());
+		cpuUsageIdle = atof(info[6].c_str());
+		ramUsed = atoi(info[9].c_str());
+		ramWired = atoi(info[11].substr(1).c_str());
+		ramUnused = atoi(info[13].c_str());
+	}
 }
 
 std::string RAMModule::getInfo(void)

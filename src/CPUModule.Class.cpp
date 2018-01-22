@@ -46,15 +46,18 @@ void CPUModule::setInfo(void)
     }
     ifs.close();
 
-    process_total = atoi(info[1].c_str());
-    process_running = atoi(info[3].c_str());
-    process_stuck = atoi(info[5].c_str());
-    process_sleeping = atoi(info[7].c_str());
-    process_threads = atoi(info[9].c_str());
-    stuck = (info[6] == "stuck");
-    load_avg1 = atof(info[stuck ? 14 : 12].c_str());
-    load_avg2 = atof(info[stuck ? 15 : 13].c_str());
-    load_avg3 = atof(info[stuck ? 16 : 14].c_str());
+	if (info.size() >= 15)
+	{
+		process_total = atoi(info[1].c_str());
+		process_running = atoi(info[3].c_str());
+		process_stuck = atoi(info[5].c_str());
+		process_sleeping = atoi(info[7].c_str());
+		process_threads = atoi(info[9].c_str());
+		stuck = (info[6] == "stuck");
+		load_avg1 = atof(info[stuck ? 14 : 12].c_str());
+		load_avg2 = atof(info[stuck ? 15 : 13].c_str());
+		load_avg3 = atof(info[stuck ? 16 : 14].c_str());
+	}
 }
 
 std::string CPUModule::getInfo(void)

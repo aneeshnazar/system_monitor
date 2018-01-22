@@ -11,6 +11,7 @@ SFILES = 	CPUModule.Class.cpp \
 			NetThruModule.Class.cpp \
 			OSInfoModule.Class.cpp \
 			TermMonitor.Class.cpp \
+			CatModule.Class.cpp \
 			main.cpp
 
 ODIR = obj
@@ -36,7 +37,7 @@ $(ODIR):
 	@mkdir $(ODIR)
 
 sfml:
-	@echo export $(SFML)
+	@export $(SFML)
 
 clean:
 	@rm -rf $(ODIR)

@@ -9,6 +9,5 @@ class IMonitorDisplay {
         ~IMonitorDisplay ();
         IMonitorDisplay &operator=(IMonitorDisplay const &input);
         virtual void run(void) = 0;
-        virtual void config(void) = 0;
 };
 #endif

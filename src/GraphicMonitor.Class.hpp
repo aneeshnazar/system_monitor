@@ -10,6 +10,7 @@
 #include "CPUModule.Class.hpp"
 #include "RAMModule.Class.hpp"
 #include "OSInfoModule.Class.hpp"
+#include "CatModule.Class.hpp"
 
 class GraphicMonitor : public IMonitorDisplay {
     private:
@@ -22,6 +23,7 @@ class GraphicMonitor : public IMonitorDisplay {
         CPUModule       cpum;
         RAMModule       ramm;
         NetThruModule   ntm;
+		CatModule		cat;
 	public:
         GraphicMonitor ();
         GraphicMonitor (GraphicMonitor const &cc);

@@ -2,7 +2,7 @@
 
 GraphicMonitor::GraphicMonitor()
 {
-    window.create(sf::VideoMode(800, 1000), "Graphic Monitor");
+    window.create(sf::VideoMode(1200, 1000), "Graphic Monitor");
     font.loadFromFile("./fonts/cour.ttf");
 }
 
@@ -17,27 +17,14 @@ GraphicMonitor &GraphicMonitor::operator=(GraphicMonitor const &input)
 {
     modules_to_display = input.modules_to_display;
     font = input.font;
-    window.create(sf::VideoMode(800, 1000), "Graphic Monitor");
+    window.create(sf::VideoMode(1200, 1000), "Graphic Monitor");
 	return (*this);
 }
 
 void GraphicMonitor::display(void)
 {
-    /*
-sf::Text    nm_str(nm.getInfo(), font, 20);
-    sf::Text    os_str(osim.getInfo(), font, 20);
-    sf::Text    dtm_str(dtm.getInfo(), font, 20);
-    sf::Text    cpum_str(cpum.getInfo(), font, 20);
-    sf::Text    ramm_str(ramm.getInfo(), font, 20);
-    sf::Text    ntm_str(ntm.getInfo(), font, 20);
-    window.draw(nm_str);
-    window.draw(os_str);
-    window.draw(dtm_str);
-    window.draw(cpum_str);
-    window.draw(ramm_str);
-    window.draw(ntm_str);*/
-
-    sf::Text    full_str(nm.getInfo() +
+    sf::Text    full_str(cat.getInfo() +
+						nm.getInfo() +
                         osim.getInfo() +
                         dtm.getInfo() +
                         cpum.getInfo() +
@@ -54,14 +41,8 @@ void GraphicMonitor::refresh(void)
     display();
 }
 
-void GraphicMonitor::config(void)
-{
-    std::cout << "Please configure GraphicModule." << std::endl;
-}
-
 void GraphicMonitor::run(void)
 {
-    config();
     while (window.isOpen())
     {
         sf::Event event;
